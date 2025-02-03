@@ -1,0 +1,254 @@
+Zad 1.
+Wymień poznane w szkoleniu struktury danych i krótko opisz różnice między każdym z nich.
+    FOR - przyjmuje 3 argumenty (początek licznika, warunek, inkrementacja/dekrementacja){ciało} - możliwość użycia continue, break
+    WHILE - (warunek){ciało, ręczna inkrementacja, dekrementacja} 
+    DO WHILE - do {ciało} while(warunek) - jedyna różnica od while to to że zostanie wykonana chociaż jeden raz ta pętla
+    for..of - (element z tablicy elementów){ciało}
+    forEach - umożliwia iterację po każdym elemencie z tablicy forEach((item) => console.log(item)) <- przykładowy syntax
+
+    Pętli for najlepiej używać gdy chcemy skrócić ilość kodu powtarzalnych operacji, 
+    while najlepiej użyć gdy są określone warunki które należy spełnić aby wykonać operację z ciała,
+    do while to ładniejszy syntax while, jedyna różnica to to że zostanie wykonana chociaż jeden raz
+    for..of alternatywny zapis pętli for
+    forEach umożliwia iterację po każdym z elementów tablicy.
+
+Zad 2.
+Mając do dyspozycji poniższą listę imion:
+
+let names = [‘Jan’, ‘Grzegorz’, ‘Krzysztof’, ‘Maciej’, ‘Joanna’, ‘Izabela’, ‘Magdalena’, ‘Kinga’, ‘Kacper’]
+
+odwołaj się kolejno do:
+pierwszego - names[0]
+ostatniego, names[names.length - 1]
+przedostatniego, names[names.length - 1]
+środkowego, names[(names.length - 1) / 2]
+elementu. 
+
+Następnie dodaj na koniec takiej listy dwa nowe imiona, a na początek jedno. Ponów operacje. 
+Czy otrzymałeś różne wyniki niż poprzednio? Jak zaprogramować ww. funkcjonalność tak, aby była niezależna od ilości elementów w liście.
+- Dodałem dwa imiona na koniec, jedno na początek. Za każdym razem imiona były dodawane zarówno na koniec tablicy jak i na początek. Próbowałem teraz również na krótkiej liście z jednym imieniem wszystko działa.
+Użyte metody: push, unshift
+
+Zad 3.
+Aby przećwiczyć możliwe do wywołania metody na tablicy, wykonaj poniższe kroki (realizację każdego z zestawów umieść w oddzielnych funkcjach):
+Zestaw I
+Stwórz pustą tablicę
+Dodaj do niej 5 nowych elementów
+Odczytaj długość takiej tablicy
+Umieść nowy element na początku tablicy
+Odczytaj pierwszy, środkowy oraz ostatni element na takiej liście
+    let names4 = []
+    names4.push('1', 2, 33, 4, 'dasda')
+    console.log(names4.length)
+    names4.unshift('Pierwszy')
+    console.log(names4[0], names4[names4.length - 1], names4[Math.floor((names4.length - 1) / 2)])
+
+
+Zestaw II
+Zadeklaruj pustą tablicę i umieść w niej 5 dowolnych nazw firm IT, które poda użytkownik. Użyj pętli.
+; let companies = []
+; for(i = 0; i < 5; i++){
+;     let company = prompt('Podaj firmy it', '')
+;     companies.push(company)
+; }
+Wyświetl tylko te firmy, które nie mają w nazwie litery ‘o’
+; for(i = 0; i < companies.length; i++){
+;     if(!companies[i].includes('o')){
+;         console.log('Firmy bez literką o', companies[i])
+;     }
+; }
+Sprawdź czy użytkownik podał firmę o nazwie “Devs-Mentoring.pl”. Na podstawie tego wyświetl odpowiedni komunikat.
+; for(i = 0; i < companies.length; i++){
+;     if(companies[i].includes('Devs-Mentoring.pl')){
+;         alert('Podałeś Devs-Mentoring :)')
+;     }
+; }
+Usuń drugą nazwę firmy z listy
+; companies.splice(1,1)
+Wyświetl tylko te nazwy, których długość przekracza 8 znaków
+; for(i = 0; i < companies.length; i++){
+;     if(companies[i].length > 8){
+;         console.log(companies[i])
+;     }
+; }
+Skopiuj tablicę do companies_copy
+; let companies_copy = companies.slice()
+Odwróć oryginalną listę, korzystając z funkcji reverse()
+; companies.reverse()
+
+Zestaw III
+Stwórz listę 10-ciu dowolnie wygenerowanych kodów o długości 5 lub 6 (długość ma być losowana)
+Wyświetl tylko te wyrazy, których długość jest parzysta
+; let codes = [
+;     'das335',
+;     'das333',
+;     'das33',
+;     'das337',
+;     'das31',
+;     'das32',
+;     'das339',
+;     'das340',
+;     'das341',
+;     'das3s'
+; ]
+; for(i = 0; i < codes.length; i++){
+;     if(codes[i].length % 2 === 0){
+;         console.log(codes[i])
+;     }
+; }
+Dla dociekliwych:
+Java zapewnia optymalizację dla operacji typu: filtrowanie. Dostarczają to tzw. funkcje wyższego rzędu (Higher Order Functions), które zostaną omówione w dalszej części szkolenia.
+
+Zad 4.
+Mając do dyspozycji poniższą tablicę:
+
+const ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24]
+Posortuj listę i znajdź wartość minimalną oraz maksymalną
+; ages.sort((a, b) => a - b)
+; ages[0]
+; ages[ages.length - 1]
+Oblicz średnią wieku
+; const sum = ages.reduce(myFunction)
+; function myFunction(total, value) {
+;   return total + value;
+; }
+; const age = Math.round(sum / ages.length)
+Oblicz przedział wieków (różnica między max a min)
+; const values = Math.min(...ages) + '-' + Math.max(...ages)
+Zad 5.
+Zaprojektuj mapę, w której przechowywać będziesz pary imię : wiek_osoby. Pobierz z niej:
+; const people = new Map([['Kamil', 23], ['Tomek', 26], ['Andrzej', 19]])
+Tylko klucze
+; for(let name of people.keys()){
+;     console.log(name); 
+; }
+Tylko wartości
+; for(let age of people.values()){
+;     console.log(age); 
+; }
+Pary wszystkich elementów (kluczy i wartości)
+; for(let pairs of people.entries()){
+;     console.log(pairs); 
+; }
+Te same operacje przeprowadź na zmiennej typu Object. Przedstaw 3 różne sposoby na tworzenie obiektu tego typu.
+; const peopleObj = {
+;     "Kamil": 23,
+;     "Andrzej": 24,
+;     "Szymek": 21,
+; }
+; Object.keys(peopleObj)
+; Object.values(peopleObj)
+Zad 6.
+Stwórz mapę, która będzie przechowywała 5 par: kluczami będą nazwy użytkowników (Dagger, Dev, JS-coder, Python-Coder, Mike), 
+a wartości do nich przypisane - stringami reprezentującymi dowolne daty rejestracji w formacie DD-MM-YYYY.
+; const users = new Map([['Dagger', '21-04-2002'],['Dev', '21-06-2001'],['Js-coder', '24-03-1997'],['Python-Coder', '11-03-1993'],['Mike', '23-04-2002']])
+Po inicjalizacji, dodaj do takiej listy 2 nowych użytkowników
+; users.set('Kamil','21-06-2001')
+; users.set('Tymek','13-02-2001')
+Usuń dowolnego usera
+users.delete('Dagger')
+Wyświetl wszystkie daty przechowywane w mapie, ale w formacie DD/MM/YYYY (nie DD-MM-YYYY)
+; let date = ''
+; for(let value of users.values()){
+;     date += value.replaceAll('-', '/') + " "
+; }
+Usuń z mapy użytkownika o nickname JS-coder
+; users.delete('JS-coder')
+
+Zad 7.
+Mając do dyspozycji poniższy zestaw informacji (jest to informacja o językach i ilości kursantów przypisanego do każdego z nich; zestaw ten umieść w Mapie)... 
+
+  ["French:", 45],
+  ["Arabic: ", 25],
+  ["Spanish:", 24],
+  ["Russian:", 9],
+  ["Portuguese:", 9],
+  ["Dutch:", '8'],
+  ["German:", 7],
+  ["Chinese:", 5],
+  ["Swahili:", 4],
+  ["Serbian:", 4],
+  ["English:", 91],
+;   const languages = new Map([
+;   ["French:", 45],
+;   ["Arabic: ", 25],
+;   ["Spanish:", 24],
+;   ["Russian:", 9],
+;   ["Portuguese:", 9],
+;   ["Dutch:", '8'],
+;   ["German:", 7],
+;   ["Chinese:", 5],
+;   ["Swahili:", 4],
+;   ["Serbian:", 4],
+;   ["English:", 91],
+; ]);
+… odczytaj nazwę państwa, z którym skojarzona jest największa ilość uczestników. Wykorzystaj forEach().
+; let arr = [];
+; languages.forEach(function(value, key){
+;     arr.push(value)
+; })
+; arr.sort((a,b) => a - b)
+; arr[arr.length - 1] => 91
+
+; function KeyByValue(map, KeyValue) {
+;     let country;
+;     map.forEach((value, key) => {
+;         country = value === KeyValue ? key : country;
+;     });
+;     return country;
+; }
+; KeyByValue(languages, 91) => English
+Zad 7.
+Wyszukaj, co oznacza, że elementy w zbiorze są hashowane. 
+
+Zad 8.
+Odszukaj, jaką złożonością wyszukiwania (time complexity) i dodawania nowych elementów charakteryzuje się mapa/zbiór/tablica. Czym jest notacja dużego O?
+
+Zad 9.
+Utwórz zbiór uniqueNumbers i dodaj do niego następujące wartości:
+1231112
+1231113
+1231114
+1221112
+1231119
+1231112
+1231114
+Odczytaj jego rozmiar. Dlaczego jest on równy 5, a nie 7 (czyli ilości liczb, które umieściliśmy w zbiorze)?
+
+Zad 10.
+Wykonaj poniższe operacje:
+Stwórz pusty zbiór. 
+Stwórz zbiór składający się z liczb od 0 do 10 (użyj pętli)
+Usuń element o wartości 5
+Wyczyść zbiór
+Stwórz drugi zbiór - składający się z 5 dowolnych nazw państw
+Stwórz mapę składającą się z kluczy - państw oraz wartości, czyli ilości liter każdego z państw 
+Zad 11.
+Wygeneruj tablicę 1000 trójelementowych napisów składających się tylko z liter: ‘a’, ‘b’, ‘c’, ‘d’, ‘e’. Odczytaj rozmiar takiej tablicy. Następnie usuń z niej duplikaty i wyświetl wynik. Jak zmienił się rozmiar? 
+
+Zad. 12 [Niestandardowe]
+Nie przegrzewa Ci się jeszcze głowa od tak dużej ilości zadań i nowej wiedzy!? :) 
+Miałbym dla Ciebie wyzwanie, zadanie będące sprawdzianem, jak poradzisz sobie z wyszukiwaniem informacji w dokumentacji. Przerobiliśmy już dość dużo materiału z JavaScript, dlatego warto, abyś przećwiczył korzystanie z dokumentacji. Zadanie znajdziesz tutaj: Elevator Saga. 
+
+Zad. 13 
+Twoim zadaniem jest napisać funkcję retrieve_seconds, która przyjmować będzie obiekt następującej postaci: 
+
+first_case = {
+    ‘name’: ‘first_case’,
+    ‘created_task’: ‘2021-10-26T19:48:12+00:00’,
+    ‘end_task’: None
+},
+
+przykład innego obiektu:
+
+second_case = {
+    ‘name’: ‘second_case’,
+    ‘created_task’: ‘2021-09-26T19:48:12+00:00’,
+    ‘end_task’: ‘2021-10-26T19:48:12+00:00’
+}
+
+Funkcja zwracać będzie różnicę czasową między end_task a created_task podaną w sekundach.
+
+UWAGA:
+Wartość None przypisana do klucza end_task oznacza, że task jeszcze trwa. 
+Zwróć uwagę na to, iż retrieve_seconds możemy wywoływać wielokrotnie 

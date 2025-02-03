@@ -1,0 +1,215 @@
+Zad 1.
+Jakie mamy sposoby na tworzenie kodu w JS? Z którego skorzystasz, gdy potrzebować będziesz na szybko przetestować snippet kodu? 
+Odp. Możemy stworzyć kod w osobnym pliku o rozszerzeniu JS, umieścić kod w pliku html, lub też skorzystać bezpośrednio z konsoli w przeglądarce. Skorzystałbym z przeglądarki
+
+Zad 2.
+Czym się różni język interpretowany od kompilowanego? Wymień przykłady języków z podziałem na takie grupy.
+Odp. Język interpretowany nie wymaga kompilacji do kodu maszynowego i są przeważnie interpretowane, przykłady:
+Przykładowe języki interpretowane to:
+    Bash
+    Maxima
+    Perl
+    PHP
+    Python
+    Ruby
+    JavaScript
+    R 
+Przykładowe języki kompilowane to:
+    C++, 
+    C, 
+    Pascal
+
+Zad 3.
+Określ, jakie rezultaty zwrócą poniższe linie kodu (typeof() zwraca typ przekazanej zmiennej):
+    typeof(“Devs-Mentoring.pl”) - string
+    typeof(15) - number;
+    typeof(2.3) - number;
+    typeof(NaN) - undefined;
+    typeof(true) - Boolean;
+    typeof(undefined) - undefined;
+
+Zad 4.
+Czym się różni zmienna zdefiniowana przy użyciu słowa kluczowego var od zmiennej z let? 
+Odp. Hoistingiem, zmienna zdefiniowana z użyciem var jest umieszczana na samej górze miejsca wykonania, lub miejsca użycia np funkcji. 
+Var można ponownie zadeklarować, let nie. Let ma zasięg blokowy, var globalny miejsca wykonania. 
+
+Zad 5.
+Czym są stałe w programie oraz co mówi Clean Code w kwestii ich nazewnictwa?
+Stałe to wyrażenie które pozostaje niezmiennie w programie. 
+Clean code mówi żebyśmy stosowali się do następujących praktyk:
+    - nazwy opisowe i jednoznaczne
+    - nazwy łatwe do wyszukania
+    - unikanie prefiksów i informacji o typie
+
+Zad. 6
+Zdefiniuj zmienną URL składają się z trzech składowych: 
+    service_name = `https://www.facebook.com/`
+    subsite = `login/`
+    parameter = `?user=devs-mentoring`
+    let URL = service_name + subsite + parameter
+
+Zad. 8
+Poproś użytkownika o wprowadzenie 5 dowolnych informacji. Następnie wyświetl komunikat: 
+“Twoje odpowiedzi to <I informacja>, <II informacja>, <III informacja>, <IV informacja>, <V informacja>.”
+   let text;
+    let message = prompt('Podaj 5 informacji, oddziel je przecinkiem', '')
+    let messageArray = message.split(',')
+    if(message === null || message === '' || messageArray.length < 5) {
+        alert('Brak wystarczających danych')
+    }
+    else {
+        text = message
+        alert(`Twoje odpowiedzi to ${messageArray[0]},${messageArray[1]},${messageArray[2]},${messageArray[3]},${messageArray[4]}`)
+        console.log('Twoje odpowiedzi to' + messageArray[0],messageArray[1],messageArray[2],messageArray[3],$messageArray[4])
+    }
+
+Zad. 9
+Poniżej coś więcej o mniej typowych typach danych:
+Czym są, tzw. złożone struktury danych? 
+    - Tablice, obiekty
+Bazując na zewnętrznych źródłach, wyjaśnij, czym jest Symbol w JavaScript (A JavaScript Symbols Tutorial)
+    - Symbol został dodany w ECMAScript 2015
+    - tworzymy go za pomocą funkcji Symbol();
+    - wraz z każdym wywołaniem otrzymamy unikatowy symbol, który będzie inny niż wszystkie inne symbole
+    - można dodać opis symbolu Symbol('Opis')
+    - jest używany do unikania zderzania się pomiędzy właściwościami, lub też do dodania właściwości których użytkownik nie może zmienić.
+
+
+Zad. 10
+    let currentYear = new Date().getFullYear();
+    let name = prompt('Podaj swoję imię', '')
+    let year = prompt('Podaj rok w którym się urodziłeś', '')
+    alert(`Cześć ${name}! Masz ${currentYear - Number(year)} lata`)
+
+Zad. 11
+    -confirm('Ten serwis wykorzystuje pliki cookies. Korzystanie z witryny oznacza zgodę na ich zapis lub odczyt wg ustawień przeglądarki.')
+
+Zad. 12
+Określ wyniki poniższych operacji. Jeżeli nie jesteś pewny odpowiedzi, to przeanalizuj wyniki, korzystając z interpretera JS lub omów jest wspólnie z mentorem:
+    ‘1’ + 2 = 12
+    2 + ‘1’ = 21
+    ‘1’ / 2 = 0.5
+    2 / 1 = 2
+    true + true = true
+    false / false = true
+    ‘1’ * 2 = 2 
+    Number(‘1’) + 2 = 3
+
+Zad. 13
+    Czym są konwersje przeprowadzane między typami oraz w jakim celu są wykonywane? Określ, jakie wartości otrzymamy po przeprowadzeniu poniższych konwersji:
+    Odp. Konwersje to zmiana typu danej wartości na inny typ, czasami musimy zmienić typ danej wartości aby wykonać zadanie. 
+    Number(undefined) = NaN
+    Number(true) = 1
+    String(true) = 'true'
+    Boolean(‘’) = false
+Zad. 14
+Wskaż nieprawidłowe odpowiedniki dla operatorów przypisania:
+a += 5 -> a = a + 5 - prawidłowe
+a -= 5 -> a = 5 – a - nieprawidłowe
+a *= 5 -> a = 5 * a - nieprawidłowe
+a *= 5 -> a = a * 5 - prawidłowe
+a /= 5 -> a = 5/a - nieprawidłowe
+
+Zad. 15
+Który zapis wybierzesz, gdy chcesz postawić na jakość i czytelność kodu w JavaScript?
+
+I
+var num1 = "2", num2 = "3";
+var sum = Number(num1) + Number(num2); // 5
+
+
+II
+var num1 = "2", num2 = "3";
+var sum = +num1 + +num2; 
+
+Wybrałbym wariant numer 1
+Jak się nazywa operator, który wykorzystaliśmy w II przykładzie? - Jest to operator jednoargumentowy(unarny), jego celem jest konwersja na typ number.
+
+Zad. 16
+Spróbuj przewidzieć wartości zmiennej new_value po wykonaniu każdej operacji z osobna:
+
+Przykład I
+var value = 100; 
+var new_value =  value++;
+alert(new_value); // jaka wartość? - 101
+
+
+
+Przykład II
+var value = 150; 
+var new_value = ++value;
+alert(new_value); // jaka wartość? - 101
+
+
+Przykład III
+var value = 99;
+var new_value = value++ * 10;
+alert(new_value); // jaka wartość? - 990 
+
+
+Przykład IV
+var value= 10;
+var other_value = 20;
+var new_value = (value++) + (++other_value);
+alert(new_value); // jaka wartość? - 11 + 21 = 32
+
+Zad. 17
+Jaki będzie wynik operacji i jakiego będzie on typu:
+5 / 2; - 2.5 Number
+1 + 1; - 2 Number
+1.0 + 1; 2 Number
+2.0 + 2.0; 4 Number
+
+1 + ‘2’; '12' string
+‘2’ / ‘2’; 1 number
+‘2’ / ‘0’; 0 number
+‘2’ + 2 + ‘2’ - 222 String
+2 + 2 + ‘2’; 42 String
+
+“napis” + 1; napis1 String
+“napis” + “napis”; napisnapis String
+True + True; True Boolean
+
+
+% - ile reszty nam z zostanie po podzieleniu
+5 % 2; 1 Number
+10 % 2; 0 Number
+20 % 30; -10 Number
+100 % 3; 1 Number
+
+** - do potęgi
+3**3; 9 Number
+2**2; 4 Number
+2**0; 1 Number
+
+Zad. 18
+Wskaż zmienne łamiące zasady Clean Code-u:
+var imię; 
+var wiek;
+var a = 10; - nie jest opisowa, nie mówi co przechowuje
+var dogName = “Burek”;
+var dog_name = “Burek”; - niepotrzebna podłoga po dog, będzie ciężko znaleźć
+var surname = 10; - nie wskazuje na nazwisko tylko na liczbę
+var Username; - zaczna się od dużej litery
+
+Zad. 19
+Czym się różni operator unary od binary? Wskaż poniżej same unarne operatory:
+Operator unarny działa tylko na jednym operandzie, wartość musi być przypisana do zmiennej
+Operator unarny może służyć do zmiany typu danych np. ze stringa na number, jest prefiksowy (umieszczamy go przed wyrażeniem), operator binarny służy do wykonywania operacji czyli np
+a + b itd..
+
+var sum = ‘2’ + ‘3’; 
+alert(+sum); - operator unarny, zmienia typ na number
+alert(2++);
+alert(‘text1’ + ‘text2’);
+alert(++1); - operator unarny, jest umieszczony przed wyrażeniem. Dokona się inkrementacja z pierwszeństwem..
+
+
+
+
+
+
+
+
+
+
