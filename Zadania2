@@ -20,13 +20,14 @@ let names = [‘Jan’, ‘Grzegorz’, ‘Krzysztof’, ‘Maciej’, ‘Joanna
 odwołaj się kolejno do:
 pierwszego - names[0]
 ostatniego, names[names.length - 1]
-przedostatniego, names[names.length - 1]
-środkowego, names[(names.length - 1) / 2]
+przedostatniego, names[names.length - 2]
+środkowego, names[Math.round((names.length - 1) / 2)]
 elementu. 
 
 Następnie dodaj na koniec takiej listy dwa nowe imiona, a na początek jedno. Ponów operacje. 
 Czy otrzymałeś różne wyniki niż poprzednio? Jak zaprogramować ww. funkcjonalność tak, aby była niezależna od ilości elementów w liście.
-- Dodałem dwa imiona na koniec, jedno na początek. Za każdym razem imiona były dodawane zarówno na koniec tablicy jak i na początek. Próbowałem teraz również na krótkiej liście z jednym imieniem wszystko działa.
+- Dodałem dwa imiona na koniec, jedno na początek. Za każdym razem imiona były dodawane zarówno na koniec tablicy jak i na początek. 
+Próbowałem teraz również na krótkiej liście z jednym imieniem wszystko działa.
 Użyte metody: push, unshift
 
 Zad 3.
@@ -200,9 +201,32 @@ Mając do dyspozycji poniższy zestaw informacji (jest to informacja o językach
 ; KeyByValue(languages, 91) => English
 Zad 7.
 Wyszukaj, co oznacza, że elementy w zbiorze są hashowane. 
+Czym jest hashowanie - hashowanie to proces przekształcania wartości na unikalny indetyfikator - hash, w zbiorze służy
+do sprawdzenia unikalności, a w mapie do szybkiego przechowywania i wyszukiwania wartości na podstawie hashu.
 
 Zad 8.
-Odszukaj, jaką złożonością wyszukiwania (time complexity) i dodawania nowych elementów charakteryzuje się mapa/zbiór/tablica. Czym jest notacja dużego O?
+Odszukaj, jaką złożonością wyszukiwania (time complexity) i dodawania nowych elementów charakteryzuje się mapa/zbiór/tablica. 
+Czym jest notacja dużego O?
+Notacja dużego O - teoretyczna wydajność algorytmu 
+Tablica 
+    wyszukiwanie -- O(1) stała złożoność wyszukiwania za pomocą indexu, jeżeli będziemy chcieli wyszukać id to wtedy O(n) bo iterujemy przez całą tablice 
+    dodawanie push -- O(1) stała złożoność dodawania  
+    dodawanie unshift -- O(n) liniowa złożoność wyszukiwania (rośnie wraz z elementami w tablicy)
+    usuwanie - za pomocą filter O(n), za pomocą splice O(n^2)
+Zbiór 
+    wyszukiwanie -- O(1) stała złożoność wyszukiwania, poprzez użycie funkcji has
+    dodawanie add -- O(1) stała złożoność dodawania
+    usuwanie delete -- O(1)
+Obiekt
+    wyszukiwanie -- O(1) stała złożoność wyszukiwania
+    dodawanie -- O(1) stała złożoność wyszukiwania
+    usuwanie -- O(1) stała złożoność wyszukiwania
+Map
+    wyszukiwanie -- O(1) stała złożoność wyszukiwania
+    dodawanie -- O(1) stała złożoność wyszukiwania
+    usuwanie -- O(1) stała złożoność wyszukiwania
+   
+
 
 Zad 9.
 Utwórz zbiór uniqueNumbers i dodaj do niego następujące wartości:
@@ -213,25 +237,67 @@ Utwórz zbiór uniqueNumbers i dodaj do niego następujące wartości:
 1231119
 1231112
 1231114
+; let uniqueNumbers = new Set([])
+; uniqueNumbers.add(1231112) i po kolei..
+; console.log(uniqueNumbers.size) = 5   
 Odczytaj jego rozmiar. Dlaczego jest on równy 5, a nie 7 (czyli ilości liczb, które umieściliśmy w zbiorze)?
+- set(zbiór) zabezpiecza nas przed nieumyślnym duplikowaniem elementów, dlatego mamy wynik 5
 
 Zad 10.
 Wykonaj poniższe operacje:
 Stwórz pusty zbiór. 
+; let numbeers = new Set([])
 Stwórz zbiór składający się z liczb od 0 do 10 (użyj pętli)
+; for(let i = 0; i <= 10; i++){
+;     numbeers.add(i)
+; }
 Usuń element o wartości 5
+; numbeers.delete(5)
 Wyczyść zbiór
+; numbeers.clear()
 Stwórz drugi zbiór - składający się z 5 dowolnych nazw państw
+; let countries = new Set([])
+; countries.add('Polska')
+; Set(1) {'Polska'}
+; countries.add('Niemcy')
+; Set(2) {'Polska', 'Niemcy'}
+; countries.add('USA')
+; Set(3) {'Polska', 'Niemcy', 'USA'}
+; countries.add('Kanada')
+; Set(4) {'Polska', 'Niemcy', 'USA', 'Kanada'}
+; countries.add('Izrael')
+; Set(5) {'Polska', 'Niemcy', 'USA', 'Kanada', 'Izrael'}
 Stwórz mapę składającą się z kluczy - państw oraz wartości, czyli ilości liter każdego z państw 
+; countries.forEach(function(value, valueAgain, set){
+;     countriesLetters.set(value, value.length)
+; })
 Zad 11.
-Wygeneruj tablicę 1000 trójelementowych napisów składających się tylko z liter: ‘a’, ‘b’, ‘c’, ‘d’, ‘e’. Odczytaj rozmiar takiej tablicy. Następnie usuń z niej duplikaty i wyświetl wynik. Jak zmienił się rozmiar? 
+
+Wygeneruj tablicę 1000 trójelementowych napisów składających się tylko z liter: ‘a’, ‘b’, ‘c’, ‘d’, ‘e’. 
+; const charCodes = ['a', 'b', 'c', 'd', 'e']; 
+; const arrrr = Array.from({ length: 1000 }, () => 
+;     charCodes[Math.floor(Math.random() * 5)] +
+;     charCodes[Math.floor(Math.random() * 5)] +
+;     charCodes[Math.floor(Math.random() * 5)]
+; );
+
+; console.log(arrrr);
+Odczytaj rozmiar takiej tablicy. Następnie usuń z niej duplikaty i wyświetl wynik. 
+arrrr.filter((item, index) => arrrr.indexOf(item) == index)
+
+Jak zmienił się rozmiar? 
+długość arrrr jest równe 125, wcześniej to było 1000
 
 Zad. 12 [Niestandardowe]
 Nie przegrzewa Ci się jeszcze głowa od tak dużej ilości zadań i nowej wiedzy!? :) 
-Miałbym dla Ciebie wyzwanie, zadanie będące sprawdzianem, jak poradzisz sobie z wyszukiwaniem informacji w dokumentacji. Przerobiliśmy już dość dużo materiału z JavaScript, dlatego warto, abyś przećwiczył korzystanie z dokumentacji. Zadanie znajdziesz tutaj: Elevator Saga. 
+Miałbym dla Ciebie wyzwanie, zadanie będące sprawdzianem, 
+jak poradzisz sobie z wyszukiwaniem informacji w dokumentacji. 
+Przerobiliśmy już dość dużo materiału z JavaScript, dlatego warto, 
+abyś przećwiczył korzystanie z dokumentacji. Zadanie znajdziesz tutaj: Elevator Saga. 
 
 Zad. 13 
-Twoim zadaniem jest napisać funkcję retrieve_seconds, która przyjmować będzie obiekt następującej postaci: 
+Twoim zadaniem jest napisać funkcję retrieve_seconds, 
+która przyjmować będzie obiekt następującej postaci: 
 
 first_case = {
     ‘name’: ‘first_case’,
@@ -245,6 +311,16 @@ second_case = {
     ‘name’: ‘second_case’,
     ‘created_task’: ‘2021-09-26T19:48:12+00:00’,
     ‘end_task’: ‘2021-10-26T19:48:12+00:00’
+}
+function retrieveSeconds(obj){
+    const created = obj.created_task.getTime() / 1000
+    if(obj.end_task == null || obj.end_task == 'None') {
+        console.log("błąd w obiekcie")
+        return
+    }
+
+    const ended = obj.end_task.getTime() / 1000
+    return ended - created;
 }
 
 Funkcja zwracać będzie różnicę czasową między end_task a created_task podaną w sekundach.
